@@ -63,10 +63,14 @@ export function LiveMonitoring() {
               }`}
             >
               <div className="absolute inset-0 bg-slate-900 flex items-center justify-center overflow-hidden">
-                {/* Normally an img tag streaming MJPEG or HLS video tag goes here */}
-                {/* <img src={feed.stream_url} className="w-full h-full object-cover" /> */}
-                <Camera className="w-12 h-12 text-slate-800" />
-                <span className="text-slate-800 absolute bottom-4 text-xs font-mono">{feed.stream_url}</span>
+                {i === 0 ? (
+                  <img src="http://localhost:8000/api/v1/stream/live" className="w-full h-full object-cover" />
+                ) : (
+                  <>
+                    <Camera className="w-12 h-12 text-slate-800" />
+                    <span className="text-slate-800 absolute bottom-4 text-xs font-mono">{feed.stream_url}</span>
+                  </>
+                )}
               </div>
               
               <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
