@@ -1,0 +1,31 @@
+#!/bin/bash
+# Sentinel AI VPS Deployment Script
+set -e
+
+echo "Starting Sentinel AI Deployment..."
+
+# Update system
+sudo apt-get update
+sudo apt-get upgrade -y
+
+# Install Docker if not present
+if ! [ -x "$(command -v docker)" ]; then
+  echo "Installing Docker..."
+  curl -fsSL https://get.docker.com -o get-docker.sh
+  sudo sh get-docker.sh
+fi
+
+# Install Docker Compose if not present
+if ! [ -x "$(command -v docker-compose)" ]; then
+  echo "Installing Docker Compose..."
+  sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  sudo chmod +x /usr/local/bin/docker-compose
+fi
+
+echo "Pulling latest changes..."
+git pull origin main
+
+echo "Building and starting containers..."
+sudo docker-compose up -d --build
+
+echo "Deployment complete! Sentinel AI is running."

@@ -1,0 +1,17 @@
+fastapi==0.111.0
+uvicorn==0.30.1
+pydantic==2.7.4
+pydantic-settings==2.3.4
+supabase==2.5.1
+python-multipart==0.0.9
+pyjwt==2.8.0
+email-validator==2.2.0
+httpx==0.27.0
+requests==2.32.3
+
+# ML packages disabled temporarily for Python 3.14 API server startup
+# numpy==1.26.4
+# opencv-python==4.10.0.84
+# ultralytics==8.2.31
+# insightface==0.7.3
+# onnxruntime==1.18.0
